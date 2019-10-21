@@ -1,0 +1,110 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-sm-1 "> </div>
+    <div class="col-md-6 col-sm-10">
+      <form #f="ngForm" (ngSubmit)="onSubmit()" class="text-center border border-light p-5" id="form">
+        <p class="h4 mb-4">Sign Up</p>
+        <div class="form-row mb-4">
+
+          <div class="col">
+            <div class="0.25">
+              <!-- First name -->
+              <input type="text" data-toggle="tooltip" data-placement="top" title="FirstName" id="FirstName" class="form-control" placeholder="First name" [(ngModel)]='Firstname'
+                [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="0.25">
+              <!-- Last name -->
+              <input type="text" data-toggle="tooltip" data-placement="top" title="Last Name" id="LastName" class="form-control" name="LastName" placeholder="Last name"
+                [(ngModel)]='Lastname' [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+        </div>
+
+        <!-- Radio Button -->
+        <mat-radio-group aria-label="Select an option" [(ngModel)]='genderUser' name="genderUser">
+          <mat-radio-button *ngFor="let gender of genders" [value]="gender" style="margin: 10px">{{gender}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <mat-form-field>
+          <input type="text" data-toggle="tooltip" data-placement="top" title="Office Location" placeholder="Office Location" aria-label="Office Location" matInput
+            [formControl]="myControl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <br>
+
+        <!-- SLider -->
+        <label style="margin-right: 30px ">How many miles do you run ?</label>
+        <mat-slider data-toggle="tooltip" data-placement="top" title="Please select miles." min="1" max="50" step="0.5" value="1" thumbLabel [displayWith]="formatLabel"></mat-slider>
+
+        <!-- Datepicker -->
+        <div class=" mb-4">
+          <input class="form-control" data-toggle="tooltip" data-placement="top" title="Please select your Birth Date." type="date" placeholder="Date of Birth" id="birth" required>
+          <div class="invalid-feedback">
+            Please provide a Date of Birth.
+          </div>
+        </div>
+
+        <!-- Sign up button -->
+        <button id="but_sub" class="btn btn-info my-4 btn-block" data-toggle="modal" data-target="#exampleModal"
+          type="submit" href="#">Submit</button>
+
+        <!-- Social register -->
+        <p>or sign up with:</p>
+        <a style="position:center" data-toggle="tooltip" data-placement="top" title="Facebook" type="button" class="light-blue-text mx-2">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a style="position:center" data-toggle="tooltip" data-placement="top" title="Twitter" type="button" class="light-blue-text mx-2">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a style="position:center" data-toggle="tooltip" data-placement="top" title="LinkedIn" type="button" class="light-blue-text mx-2">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a style="position:center" data-toggle="tooltip" data-placement="top" title="Github" type="button" class="light-blue-text mx-2 ">
+          <i class="fab fa-github"></i>
+        </a>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel">User Data List View</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <mat-card>
+          <mat-list>
+            <mat-list-item> User First Name : {{Firstname}} </mat-list-item>
+            <mat-list-item> User Last Name : {{Lastname}} </mat-list-item>
+            <mat-list-item> Gender : {{genderUser}} </mat-list-item>
+          </mat-list>
+        </mat-card>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

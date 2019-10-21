@@ -1,0 +1,42 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+i.fab{
+    width:30px
+  }
+  .tp-radio-group {
+    display: inline-flex;
+    flex-direction: column;
+ }
+ .tp-radio-button {
+    margin: 5px;
+ }
+ .tp-selected-value {
+    margin: 15px 0;
+ }
+
+ mat-slider {
+   width: 300px;
+ }
+
+ .mat-list-icon {
+   color: rgba(0, 0, 0, 0.54);
+ }
+
+ .col-25 {
+   float: left;
+   width: 25%;
+   margin-top: 6px;
+ }
+ 
+ .col-75 {
+   float: left;
+   width: 75%;
+   margin-top: 6px;
+ }
+ 
+@media screen and (max-width: 600px) {
+   .col-25, .col-75, input[type=submit] {
+     width: 100%;
+     margin-top: 0;
+   }
+}
